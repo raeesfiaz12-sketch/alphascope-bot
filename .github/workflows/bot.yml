@@ -1,5 +1,9 @@
 name: AlphaScope Bot
 
+concurrency:
+  group: alpha-scope-bot
+  cancel-in-progress: true
+  
 on:
   workflow_dispatch:
   push:
