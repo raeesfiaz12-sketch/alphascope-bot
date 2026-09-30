@@ -195,6 +195,7 @@ async def channel_post(
     update: Update,
     context: ContextTypes.DEFAULT_TYPE
 ):
+    
     if not update.channel_post:
         return
 
@@ -221,25 +222,25 @@ async def channel_post(
     if not message_text:
         return
 
-call_text = (
-    f"📡 {channel_username}\n"
-    f"{message_text[:500]}"
-)
-live_calls.append(call_text)
+    call_text = (
+        f"📡 {channel_username}\n"
+        f"{message_text[:500]}"
+    )
 
-# Keep memory small
-if len(live_calls) > 50:
-    del live_calls[:-50]
+    live_calls.append(call_text)
+
+    if len(live_calls) > 50:
+        del live_calls[:-50]
 
     try:
         await context.bot.send_message(
             chat_id="@AlphaScopeTracker",
             text=(
-                f"⚡ <b>NEW KOL CALL</b>\n\n"
-                f"━━━━━━━━━━━━━━━━━━\n"
+                f"⚡ <b>NEW KOL CALL</b>\n"
+                f"──────────────────\n\n"
                 f"📡 <b>Source:</b> {channel_username}\n\n"
                 f"{message_text[:3000]}\n\n"
-                f"━━━━━━━━━━━━━━━━━━\n"
+                f"──────────────────\n"
                 f"⚡ <b>AlphaScope Tracker</b>"
             ),
             parse_mode="HTML",
