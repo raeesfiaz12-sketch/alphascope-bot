@@ -232,18 +232,21 @@ async def channel_post(
     if len(live_calls) > 50:
         del live_calls[:-50]
 
-    for user_id in matching_users:
-        try:
-            await context.bot.send_message(
-                chat_id=user_id,
-                text=(
-                    "🔥 New Channel Post\n\n"
-                    f"📡 {channel_username}\n\n"
-                    f"{message_text[:3500]}"
-                ),
-            )
-        except Exception as e:
-            print(f"Could not notify user {user_id}: {e}")
+    try:
+    await context.bot.send_message(
+        chat_id="@AlphaScopeTracker",
+        text=(
+            f"🔥 <b>NEW KOL CALL</b>\n\n"
+            f"📡 <b>Source:</b> {channel_username}\n\n"
+            f"📝 <b>Call:</b>\n"
+            f"{message_text[:3000]}\n\n"
+            f"⚡ <b>AlphaScope Tracker</b>"
+        ),
+        parse_mode="HTML",
+        disable_web_page_preview=True,
+    )
+except Exception as e:
+    print(f"Could not post to tracker channel: {e}")
 
 
 def main():
