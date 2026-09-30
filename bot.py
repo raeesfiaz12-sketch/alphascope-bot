@@ -197,9 +197,8 @@ async def channel_post(
 ):
     if not update.channel_post:
         return
-print("🔥 CHANNEL POST RECEIVED:",
-      
-      update.channel_post.chat.username)
+
+    print("🔥 CHANNEL POST RECEIVED:", update.channel_post.chat.username)
 
     chat = update.channel_post.chat
 
