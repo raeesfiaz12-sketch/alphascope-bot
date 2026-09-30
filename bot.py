@@ -232,7 +232,7 @@ async def channel_post(
     if len(live_calls) > 50:
         del live_calls[:-50]
 
-            try:
+    try:
         await context.bot.send_message(
             chat_id="@AlphaScopeTracker",
             text=(
@@ -250,7 +250,6 @@ async def channel_post(
 
 
 def main():
-
     token = os.getenv("BOT_TOKEN")
 
     if not token:
@@ -263,6 +262,7 @@ def main():
         .token(token)
         .build()
     )
+    
 
     app.add_handler(
         CommandHandler("start", start)
