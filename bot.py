@@ -158,11 +158,11 @@ async def channel_input(
 ):
     user_data = context.user_data
 
-if user_data is None:
-    return
+    if user_data is None:
+        return
 
-if not user_data.get("waiting_for_channel"):
-    return
+    if not user_data.get("waiting_for_channel"):
+        return
 
     channel = update.message.text.strip()
 
