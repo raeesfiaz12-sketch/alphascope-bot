@@ -231,23 +231,20 @@ live_calls.append(call_text)
 if len(live_calls) > 50:
     del live_calls[:-50]
 
-try:
-    await context.bot.send_message(
-        chat_id="@AlphaScopeTracker",
-        text=(
-            f"⚡️ <b>NEW KOL CALL</b>\n"
-            f"━━━━━━━━━━━━━━━━━━━━\n\n"
-            f"📡 <b>Source:</b> {channel_username}\n\n"
-            f"{message_text[:3000]}\n\n"
-            f"━━━━━━━━━━━━━━━━━━━━\n"
-            f"⚡️ <b>AlphaScope Tracker</b>"
-        ),
-        parse_mode="HTML",
-        disable_web_page_preview=True,
-    )
-    
-    
-        
+    try:
+        await context.bot.send_message(
+            chat_id="@AlphaScopeTracker",
+            text=(
+                f"⚡ <b>NEW KOL CALL</b>\n\n"
+                f"━━━━━━━━━━━━━━━━━━\n"
+                f"📡 <b>Source:</b> {channel_username}\n\n"
+                f"{message_text[:3000]}\n\n"
+                f"━━━━━━━━━━━━━━━━━━\n"
+                f"⚡ <b>AlphaScope Tracker</b>"
+            ),
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+        )
     except Exception as e:
         print(f"Could not post to tracker channel: {e}")
 
