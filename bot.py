@@ -232,24 +232,25 @@ async def channel_post(
     if len(live_calls) > 50:
         del live_calls[:-50]
 
-    try:
-    await context.bot.send_message(
-        chat_id="@AlphaScopeTracker",
-        text=(
-            f"🔥 <b>NEW KOL CALL</b>\n\n"
-            f"📡 <b>Source:</b> {channel_username}\n\n"
-            f"📝 <b>Call:</b>\n"
-            f"{message_text[:3000]}\n\n"
-            f"⚡ <b>AlphaScope Tracker</b>"
-        ),
-        parse_mode="HTML",
-        disable_web_page_preview=True,
-    )
-except Exception as e:
-    print(f"Could not post to tracker channel: {e}")
+            try:
+        await context.bot.send_message(
+            chat_id="@AlphaScopeTracker",
+            text=(
+                f"🔥 <b>NEW KOL CALL</b>\n\n"
+                f"📡 <b>Source:</b> {channel_username}\n\n"
+                f"📢 <b>Call:</b>\n"
+                f"{message_text[:3000]}\n\n"
+                f"⚡ <b>AlphaScope Tracker</b>"
+            ),
+            parse_mode="HTML",
+            disable_web_page_preview=True,
+        )
+    except Exception as e:
+        print(f"Could not post to tracker channel: {e}")
 
 
 def main():
+
     token = os.getenv("BOT_TOKEN")
 
     if not token:
